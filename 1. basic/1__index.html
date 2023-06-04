@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<style>
+  .test-class{
+    color: blue;
+  }
+</style>
+<body>
+
+<!-- This <div> will be replaced by the template of the Vue instance. -->
+<div id='app'></div>
+<div id="hello"></div>
+
+<script>
+myObject = new Vue({
+  el: '#app',
+  template: 
+    `
+    <div>
+      <h2> Vue.js Application </h2>
+      <p> Trying typing something in the text bar below</p>
+      <p> <input v-model="message"> </p>
+      <p> {{prependMsg}} {{ message }} </p>
+    </div>
+    `
+  ,
+  data: {
+    message: '',
+    prependMsg: 'Hello! Did you just write: '
+  }
+})
+
+new Vue({
+  el: '#app',
+  template: 
+  `
+  <div>
+    <p class='test-class'> hello this is for testing {{name}} </p>
+    <input v-model="name">
+  </div>
+  `,
+  data: {
+    name: 'hi'
+  }
+})
+</script>
+
+</body>
+</html>

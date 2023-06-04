@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <div id="app"></div>
+
+        <!-- the $mount allows us to defer the mounting process. -->
+        <script>
+            const vueInstance = new Vue({
+                template:  `<div>$mount - it is mounted after 2 seconds - defer</div>`
+            })
+
+            setTimeout(() => {
+                vueInstance.$mount('#app')
+            }, 2000);
+        </script>
+
+        <!-- --------------------------------------------- -->
+
+        <!-- the el mounts the vue instance immediately -->
+        <!-- <script>
+            new Vue({
+                el: '#app',
+                template : '<div> el - mounts the template immdiately'
+            })
+        </script> -->
+    </body>
+</html>
