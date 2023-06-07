@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            let myVM = new Vue({
+                el: "#app",
+                template: `
+                <div>
+                    <h1>Vue.js Application</h1>
+                    <p> Please see the console below to view when each lifecycle hook is executed!</p>
+                    <h3> The instance will be destroyed after three seconds! So, destruction hooks will run later. </h3>
+                </div>
+                `,
+                beforeCreate() {
+                    console.log("Events and lifecycle have been initialized");
+                },
+                created() {
+                    console.log("Vue instance have been created!");
+                },
+                beforeMount() {
+                    console.log("vm.$el has not been created yet.");
+                },
+                mounted() {
+                    console.log(
+                        "vm.$el has been created and el has been replaced. Waiting for destruction!"
+                    );
+                },
+                beforeUpdate() {
+                    console.log(
+                        "Virtual DOM has not re-rendered or patched yet"
+                    );
+                },
+                updated() {
+                    console.log("Virtual DOM has re-rendered and patched.");
+                },
+                beforeDestroy() {
+                    console.log(
+                        "Destroyed!!! Watchers and event listeners have not been teared down yet."
+                    );
+                },
+                destroyed() {
+                    console.log(
+                        "Watchers and event listeners have been torn down"
+                    );
+                },
+            });
+
+            setTimeout(function () {
+                myVM.$destroy();
+            }, 3000);
+        </script>
+    </body>
+</html>
