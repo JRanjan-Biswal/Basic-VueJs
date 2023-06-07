@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            new Vue({
+                el: "#app",
+                template: `
+                <div>
+                    <h1>Vue.js Application</h1>
+                    <h2>All employees are listed below</h2>
+                    <p v-for="employee in employees">
+                    {{ employee }}
+                    </p>
+                    <hr />
+                    <h2>we can also interate over the object properties</h2>
+                    <p v-for="car in cars">{{car}}</p>
+                    <hr />
+                    <h2>Iterating over object properties using key and values</h2>
+                    <p v-for="(value, key, index) in cars">{{ key }} : {{value}}</p>
+                </div>
+                `,
+                data: {
+                    employees: [
+                        "Krish",
+                        "Shaktiman",
+                        "Kantara",
+                        "Shenshah",
+                        "Robot",
+                    ],
+                    cars: {
+                        brand: "Toyota",
+                        type: "sedan",
+                        capacity: 4,
+                        height: 4.5,
+                        width: 5.7,
+                        fuel_capacity: 50,
+                        model: 2020,
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

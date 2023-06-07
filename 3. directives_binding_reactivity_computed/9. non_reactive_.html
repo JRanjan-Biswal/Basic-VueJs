@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            let vueInstance = new Vue({
+                el: "#app",
+                template: `
+                <div>
+                    <h1>Vue.js Application</h1>
+                    <h2>Wait for the 'Daisy' to get added in flowers list!</h2>
+                    <li v-for="flower in flowers">
+                    {{ flower }} 
+                    </li>
+                </div>
+                `,
+                data: {
+                    flowers: ["Tulip", "Rose", "Sunflower"],
+                },
+            });
+
+            // Updating the first flower in list after 2 seconds
+            setTimeout(() => {
+                vueInstance.flowers[0] = "Daisy";
+                console.log(
+                    "2 seconds passed, we updated the array but DOM did not change!"
+                );
+            }, 2000);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            new Vue({
+                el: "#app",
+                template: `
+                <div>
+                    <h1>Vue.js Application</h1>
+                    <div> The number of employees in company X is: {{ numEmployees }}</div>
+                </div>
+                `,
+                data: {
+                    employees: ["Jayson", "Alex", "Cecilia", "John", "Ali"],
+                },
+                computed: {
+                    numEmployees: function () {
+                        // `this` points to the Vue instance
+                        return this.employees.length;
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+        .test-class {
+            color: blue;
+        }
+    </style>
+    <body>
+        <div id="app"></div>
+
+        <script>
+            Vue.directive("myTextStyle", {
+                bind(element, binding, v_node) {
+                    console.log(binding.value.color);
+                    element.style.color = binding.value.color;
+                    element.style.fontSize = "30px";
+                },
+            });
+
+            myObject = new Vue({
+                el: "#app",
+                template: `
+                    <div>
+                        <span v-pre>{{ this is pre directive }}</span><br /><br />
+                        <hr />
+                        <div>
+                            <h3> FILTERS USING ( | ) </h3>
+                            <p> The name {{name}} has <b>{{name | lettersCount}}</b> letters </p>
+                        </div>
+                        <hr />
+                        <div>
+                            <h3> CUSTOM ATTRIBUTES </h3>
+                            <p v-myTextStyle = "{color:'red'}"> I am formatted using the custom directive!</p>
+                        </div>
+                    </div>
+                    `,
+                data: {
+                    message: "",
+                    prependMsg: "Hello! Did you just write: ",
+                    name: "jyoti",
+                },
+                filters: {
+                    lettersCount: function (value) {
+                        return value.length;
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>
