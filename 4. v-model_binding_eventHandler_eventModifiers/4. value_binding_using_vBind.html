@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            // CHECK-BOX
+            // new Vue({
+            //     el: "#app",
+            //     template: `
+            //     <div>
+            //         <h1>Vue.js Application</h1>
+            //         <p>Please check and uncheck the check box below</p>
+            //         <input
+            //         type="checkbox"
+            //         v-model="toggle"
+            //         true-value="Yes"
+            //         false-value="No">
+
+            //         <label> Item </label>
+            //         <br><br>
+            //         <span> Value of toggle: {{ toggle }} </span>
+            //     </div>
+            //     `,
+            //     data: {
+            //         toggle: "No",
+            //     },
+            // });
+
+            // RADIO-BUTTONS
+            // new Vue({
+            //     el: "#app",
+            //     template: `
+            //     <div>
+            //         <h1>Vue.js Application</h1>
+            //         <h3> Please choose your gender </h3>
+            //         <input type="radio" id="male" v-bind:value="male_pronoun" v-model="toggle">
+            //         <label for="male">Male</label>
+            //         <br>
+            //         <input type="radio" id="female" v-bind:value="female_pronoun" v-model="toggle">
+            //         <label for="female">Female</label>
+
+            //         <br><br>
+            //         <span> The learner is learning Vue.js from Educative. <b>{{ toggle }}</b> wants
+            //             to be a Vue.js developer!
+            //         </span>
+
+            //     </div>
+            //     `,
+            //     data: {
+            //         toggle: "___",
+            //         male_pronoun: "He",
+            //         female_pronoun: "She",
+            //     },
+            // });
+
+            // SELECTION LIST
+            new Vue({
+                el: "#app",
+                template: `
+                <div>
+                    <h1>Vue.js Application</h1>
+                    <h3> Please choose your gender </h3>
+                    <select v-model="selected">
+                        <option disabled v-bind:value="selected">Please select one</option>
+                        <option v-bind:value="male_pronoun"> Male </option>
+                        <option v-bind:value="female_pronoun"> Female </option>
+                        <option v-bind:value="general_pronoun"> Prefer not to answer </option>
+                    </select>
+
+                    <br><br>
+                    <span> The learner is learning Vue.js from Educative. <b>{{ selected }}</b> wants 
+                        to be a Vue.js developer!
+                    </span>
+                </div>
+                `,
+                data: {
+                    selected: "___",
+                    male_pronoun: "He",
+                    female_pronoun: "She",
+                    general_pronoun: "They",
+                },
+            });
+        </script>
+    </body>
+</html>

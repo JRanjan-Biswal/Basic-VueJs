@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            // MOUSE EVENTS
+            // new Vue({
+            //     el: "#app",
+            //     template: `
+            //     <div>
+            //         <h1>Vue.js Application</h1>
+            //         <button v-on:click="showMessage('Hello! How are you?')">
+            //             Say Hello!
+            //         </button>
+            //         <button v-on:click="showMessage('Bye! See you soon.')">
+            //             Say Good Bye!
+            //         </button>
+            //         <br>
+            //     </div>
+            //     `,
+            //     methods: {
+            //         showMessage(msg) {
+            //             alert(msg);
+            //         },
+            //     },
+            // });
+
+            // KEYBOARD EVENTS
+            new Vue({
+                el: "#app",
+                template: `
+                <div>
+                    <h1>Vue.js Application</h1>
+                    <p>Type the message in the text box below and press <b>Enter</b>.</p>
+                    <input v-on:keyup.enter="showMessage" v-model="message" placeholder="Write the message here...">
+                    <br>
+                </div>
+                `,
+                data: {
+                    message: "",
+                },
+                methods: {
+                    showMessage() {
+                        alert(this.message);
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

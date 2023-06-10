@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            // TRIM MODIFIER
+            // new Vue({
+            //     el: "#app",
+            //     template: `
+            //     <div>
+            //         <h1>Vue.js Application</h1>
+            //         <input v-model.trim="message" placeholder="Write here...">
+            //         <p>You entered:___{{ message }}___</p>
+            //         <p>We have placed underscores so that you notice that white spaces at both ends are removed.</p>
+            //         <br>
+            //     </div>
+            //     `,
+            //     data: {
+            //         message: "",
+            //     },
+            // });
+
+            // NUMBER MODIFIER
+            // new Vue({
+            //     el: "#app",
+            //     template: `
+            //     <div>
+            //         <h1>Vue.js Application</h1>
+            //         <p>Enter a number in the text box below and see the result after adding one to it</p>
+            //         <input v-model="count" placeholder="Write here..." type="number" >
+            //         <p>You entered: {{ count + 1 }}</p>     <!-- adding 1 to the count-->
+            //         <p> Observe that adding 1 to the count just appends 1 to the input because
+            //             it considers it a string. </p>
+            //         <br>
+            //     </div>
+            //     `,
+            //     data: {
+            //         count: 0, //count is defined as a integer but still is considered a
+            //         // string without .number modifier.
+            //     },
+            // });
+
+            // LAZY MODIFIER
+            new Vue({
+                el: "#app",
+                template: `
+                <div>
+                    <h1>Vue.js Application</h1>
+
+                    <p>Enter your <b>name</b> in the text box below and <b>click on the whitespace</b> afterwards.</p>
+                    <input v-model.lazy="name" placeholder="Write name here..."  >
+
+                    <p>Your name is: {{ name }}</p> 
+
+                    <p> Observe that the name gets updated only after clicking 
+                        on the white space and not on every keystroke.</p>
+
+                </div>
+                `,
+                data: {
+                    name: "",
+                },
+            });
+        </script>
+    </body>
+</html>

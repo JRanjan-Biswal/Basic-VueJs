@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            /// ISSUE ///
+            new Vue({
+                el: "#app",
+                template: `
+                <div>
+                    <h1>Vue.js Application</h1>
+                    <h4>Please click on the link below and click on 'OK' on alert message.</h4>
+                    <p> This is a link to 
+                    
+                    <a v-on:click="clicked" href="https://www.w3.org/">
+                    Another Website </a>.
+                    
+                    </p>
+                    <br>
+                </div>
+                `,
+                methods: {
+                    clicked() {
+                        alert(
+                            "This alert is triggered from v-on:click event handler."
+                        );
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>
