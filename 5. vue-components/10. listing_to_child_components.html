@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            var posts = {
+                template: ` 
+                    <div>
+                        <h2> Posts </h2>
+                        <h3> <b>{{postData.poster}} just posted:</b> </h3>
+                        <p style='font-size: 20px;'> {{postData.post}} </p>
+                        <button @click="$emit('next_post')"> Next Post </button>
+                    </div>
+                    `,
+                props: ["postData"],
+            };
+
+            new Vue({
+                el: "#app",
+                template: `
+                    <div>
+                        <h1> Vue.js Application </h1>
+                        <posts :postData='postToSend' v-on:next_post='sendNextPost' />
+                    </div>
+                    `,
+                data: {
+                    index: 0,
+                    postsList: [
+                        {
+                            poster: "Andrew",
+                            post: "Hey there! Educative is a nice learning platfrom.",
+                        },
+                        {
+                            poster: "Bob",
+                            post: "Good morning! Have a nice day xoxo",
+                        },
+                        {
+                            poster: "Michael",
+                            post: "Its my birthday today! Please wish me.",
+                        },
+                        {
+                            poster: "Alice",
+                            post: "Learn Vue.js from Educative. 10/10 recommended.",
+                        },
+                    ],
+                },
+                computed: {
+                    postToSend() {
+                        return this.postsList[this.index];
+                    },
+                },
+                methods: {
+                    sendNextPost: function () {
+                        this.index = (this.index += 1) % this.postsList.length;
+                    },
+                },
+                components: {
+                    posts,
+                },
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            var myMixin = {
+                methods: {
+                    count: function (list) {
+                        return list.length;
+                    },
+                },
+            };
+
+            var StudentSummary = {
+                template: ` 
+                    <div>
+                        <h2> Students Summary </h2>
+
+                        <li v-for="student in students">
+                        {{ student }}
+                        </li>
+                        <p> <b>Total students:</b> {{ count(students) }}</p>
+                    </div>
+                    `,
+                data: function () {
+                    return {
+                        students: [
+                            "Bob",
+                            "Alice",
+                            "Martin",
+                            "Lewis",
+                            "Alex",
+                            "Jayson",
+                        ],
+                    };
+                },
+                mixins: [myMixin],
+            };
+
+            var InstructorSummary = {
+                template: ` 
+                    <div>
+                        <h2> Instructor Summary </h2>
+
+                        <li v-for="instructor in instructors">
+                        {{ instructor }}
+                        </li>
+                        <p> <b>Total instructors:</b> {{ count(instructors) }} </p>
+                    </div>
+                    `,
+                data: function () {
+                    return {
+                        instructors: ["Donald", "Cecilia", "Sidra", "Rauhaan"],
+                    };
+                },
+                mixins: [myMixin],
+            };
+
+            new Vue({
+                el: "#app",
+                template: `
+                    <div>
+                        <h1> Vue.js Application </h1>
+                        <h2> The XYZ School Portal</h2>
+
+                        <StudentSummary/>
+                        <InstructorSummary/>
+                        
+                    </div>
+                    `,
+                components: {
+                    StudentSummary,
+                    InstructorSummary,
+                },
+            });
+        </script>
+    </body>
+</html>

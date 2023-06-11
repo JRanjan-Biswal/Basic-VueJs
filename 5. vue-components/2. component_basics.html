@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            const ToggleSwitch = {
+                data: function () {
+                    return {
+                        switchStatus: "Off",
+                    };
+                },
+                methods: {
+                    toggle() {
+                        if (this.switchStatus === "Off") {
+                            this.switchStatus = "On";
+                        } else {
+                            this.switchStatus = "Off";
+                        }
+                    },
+                },
+                template: `
+                    <div>
+                        <h3>This is the ToggleSwitch!</h3>
+                        <button @click="toggle" style="padding: 15px 32px;">
+                        {{ switchStatus }}
+                        </button>
+                    </div>
+                    `,
+            };
+
+            new Vue({
+                el: "#app",
+                template: `
+                    <div>
+                        <h1>Vue.js Application</h1>
+                        <p>Please click on the button from the 'ToggleSwitch' component below</p>
+                        
+                        <ToggleSwitch/>
+
+                    </div>
+                    `,
+                components: {
+                    ToggleSwitch,
+                },
+            });
+        </script>
+    </body>
+</html>

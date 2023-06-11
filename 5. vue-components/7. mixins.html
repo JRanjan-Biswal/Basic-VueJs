@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            const myMixin = {
+                created: function () {
+                    console.log("Mixin Created!");
+                },
+            };
+
+            const myComponent = {
+                template: ` 
+                    <div>
+                        <h2> This is myComponent. </h2>
+
+                    </div>
+                    `,
+                created: function () {
+                    console.log("Component Created!");
+                },
+                mixins: [myMixin],
+            };
+
+            let vueVM = new Vue({
+                el: "#app",
+                template: `
+                    <div>
+                        <h1> Vue.js Application </h1>
+                        
+                        <myComponent />
+                    </div>
+                    `,
+                components: {
+                    myComponent,
+                },
+            });
+        </script>
+    </body>
+</html>
