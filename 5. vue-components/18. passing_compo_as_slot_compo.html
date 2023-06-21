@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            let c1 = {
+                template: `
+                    <div>
+                    <h4>This is the c1 component. The component 'c2' passed to slot should appear under this</h4>
+                        <slot> </slot> <!-- c2 component will be placed here-->
+                    <p>You can see the contents of c2 above, that is passed to me using slots</p>
+                    </div>`,
+            };
+            let c2 = {
+                template: `
+                    <div>
+                        <h4> I am the c2 component </h4>
+                    </div>`,
+            };
+
+            new Vue({
+                el: "#app",
+                template: `
+                    <div>
+                        <h1>Vue application</h1>
+
+                    <p>Below are the contents of c1 component</p>
+                        
+                        <c1> 
+                            <c2> </c2>  <!-- c2 composed into c1-->
+                        </c2>
+
+                    </div>
+                    `,
+                components: {
+                    c1,
+                    c2,
+                },
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+        .tab-button {
+            padding: 16px 20px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background: #f0f0f0;
+            margin-bottom: -1px;
+            margin-right: -1px;
+        }
+        .tab-button:hover {
+            background: #e0e0e0;
+        }
+        .tab-button.active {
+            background: #e0e0e0;
+        }
+        .tab {
+            border: 1px solid #ccc;
+            padding: 30px;
+        }
+    </style>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            var tabs = [
+                {
+                    name: "Home",
+                    component: {
+                        template: `
+                        <div>
+                            <h3>Home component</h3>
+                            <p>This is the content from the home component.</p>
+                        </div>`,
+                    },
+                },
+                {
+                    name: "Posts",
+                    component: {
+                        template: `
+                        <div>
+                            <h3>Post component</h3>
+                            <p> This component displays posts.</p>
+                        </div>`,
+                    },
+                },
+                {
+                    name: "About us",
+                    component: {
+                        template: `
+                            <div>
+                                <h3>About us component</h3>
+                                <p> The information about us can be found here. </p>
+                            </div>`,
+                    },
+                },
+            ];
+
+            new Vue({
+                el: "#app",
+                template: `
+                    <div>
+                        <h1>Vue application</h1>
+                        <button
+                            v-on:click="currentTab = tabs[0]">
+                            {{ tabs[0].name }}
+                        </button>
+                        <button
+                            v-on:click="currentTab = tabs[1]">
+                            {{ tabs[1].name }}
+                        </button>
+                        <button
+                            v-on:click="currentTab = tabs[2]">
+                            {{ tabs[2].name }}
+                        </button>
+                        
+                        <div class='dynamic_component'>
+                            <component v-bind:is="currentTab.component"> </component>
+                        </div>
+                    </div>
+                    `,
+                data: {
+                    tabs: tabs,
+                    currentTab: tabs[0],
+                },
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<body>
+
+<!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+<div id="app"></div> 
+
+<script>
+    let posts = {
+	template: `
+  <div>
+    <h2> <slot name="title"></slot>         </h2>
+    <h3> <slot name="poster"> </slot>       </h3>
+    <p>  <slot name="postContent"> </slot>  </p>
+  </div>`
+};
+
+
+new Vue({
+	el: "#app",
+ template: `
+ <div>
+ 	<h1>Vue application</h1>
+    
+    <posts>
+      <template v-slot:title>
+        Following is the Post
+      </template>
+
+      <template v-slot:poster>
+        Alex just posted:
+      </template>
+
+      <template v-slot:postContent>
+        Educative is awesome
+      </template>
+
+    </posts>
+
+ </div>
+ `,
+ components: {
+ 	posts
+ }
+});
+</script>
+</body>
+</html>

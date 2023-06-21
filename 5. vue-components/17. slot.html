@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <body>
+        <!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+        <div id="app"></div>
+
+        <script>
+            let posts = {
+                template: `
+                    <div>
+                    <h3>This is a child component. The content passed to slot should apear under this</h3>
+                        <slot></slot>
+                    <p>This is a paragraph after slot the content in the child component</p>
+                    </div>`,
+            };
+
+            new Vue({
+                el: "#app",
+                template: `
+                    <div>
+                        <h1>Vue application</h1>
+
+                    <!-- You can change the content passed to the posts component -->
+                    <posts> Content passed to the slot </posts>  
+                    
+                    <p>This is a paragraph in the parent component </p>
+                    </div>
+                `,
+                components: {
+                    posts,
+                },
+            });
+        </script>
+    </body>
+</html>
